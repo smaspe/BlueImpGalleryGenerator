@@ -9,14 +9,15 @@ import Image
 import time
 import sys
 
-workingdir = sys.argv[1]
+workingdir = os.path.normpath(sys.argv[1])
+
 if not os.path.isdir(workingdir):
 	workingdir = os.path.dirname(workingdir)
-print workingdir
+
 clonedir = workingdir + "/.clone"
 thumbdir = clonedir + "/images/thumbnails/"
 imagedir = clonedir + "/images/"
-finaldir = workingdir + "/generated"
+finaldir = workingdir + "/" + os.path.basename(workingdir) + "_gallery"
 
 if os.path.exists(clonedir):
 	shutil.rmtree(clonedir)
