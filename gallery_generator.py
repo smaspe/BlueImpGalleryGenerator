@@ -9,6 +9,8 @@ import Image
 import time
 import sys
 
+THUMBSIZE = 187
+
 workingdir = os.path.normpath(sys.argv[1])
 
 if not os.path.isdir(workingdir):
@@ -39,12 +41,12 @@ for img in files:
 	else:
 		ratio = float(im.size[0]) / float(im.size[1])
 
-	im.thumbnail((128 * ratio + 1, 128 * ratio + 1), Image.ANTIALIAS)
+	im.thumbnail((THUMBSIZE * ratio + 1, THUMBSIZE * ratio + 1), Image.ANTIALIAS)
 
-	im = im.crop(((im.size[0] - 128) / 2,
-		(im.size[1] - 128) / 2,
-		128 + (im.size[0] - 128) / 2,
-		128 + (im.size[1] - 128) / 2))
+	im = im.crop(((im.size[0] - THUMBSIZE) / 2,
+		(im.size[1] - THUMBSIZE) / 2,
+		(im.size[0] + THUMBSIZE) / 2,
+		(im.size[1] + THUMBSIZE) / 2))
 
 	img = os.path.basename(img)
 
