@@ -37,8 +37,17 @@ files.sort()
 
 imgDiv = ""
 for img in files:
-	shutil.copy2(img, imagedir)
 	im = Image.open(img)
+	exif = im._getexif()
+	orientation_key = 274
+	if exif and orientation_key in exif:
+		orientation = exif[orientation_key]
+		rotate_values = {3: 180, 6: 270, 8: 90}
+		if orientation in rotate_values:
+			im = im.rotate(rotate_values[orientation])
+
+	im.save(os.path.join(imagedir, os.path.basename(img)), quality=100)
+
 	if im.size[0] < im.size[1]:
 		ratio = float(im.size[1]) / float(im.size[0])
 	else:
