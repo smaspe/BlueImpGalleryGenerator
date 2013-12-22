@@ -30,7 +30,10 @@ repo.git.checkout("2.12.4")
 if not os.path.exists(thumbdir):
 	os.makedirs(thumbdir)
 
-files = glob.glob(workingdir + "/*.png") + glob.glob(workingdir + "/*.jpg")
+files = []
+for ext in ["png", "jpg", "JPG"]:
+	files += glob.glob(workingdir + "/*." + ext)
+files.sort()
 
 imgDiv = ""
 for img in files:
