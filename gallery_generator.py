@@ -6,7 +6,7 @@ import glob
 import shutil
 import os
 import Image
-
+import time
 import sys
 
 workingdir = sys.argv[1]
@@ -68,7 +68,8 @@ f.write("""<!DOCTYPE HTML>
 </head>
 <body>
 
-<h2>""" + os.path.basename(workingdir) + """</h2>
+<h1>""" + os.path.basename(workingdir) + """</h1>
+<h2>""" + time.strftime('%c') + """</h2>
 <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
 <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
     <div class="slides"></div>
