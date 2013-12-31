@@ -112,7 +112,7 @@ f.write("""<!DOCTYPE HTML>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <![endif]-->
 <meta charset="utf-8">
-<title>Test Gallery</title>
+<title>""" + os.path.basename(workingdir) + """</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/blueimp-gallery.min.css">
 <link rel="stylesheet" href="css/demo.css">
