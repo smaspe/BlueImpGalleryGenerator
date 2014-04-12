@@ -57,6 +57,7 @@ imgs = []
 files = []
 for ext in ["3gp", "mp4"]:
 	files += glob.glob(workingdir + "/*." + ext)
+
 for media in files:
 	filename = os.path.basename(media)
 	ext = os.path.splitext(filename)
@@ -73,6 +74,7 @@ for media in files:
 	im = getThumb(im)
 	im.save(thumbdir + thumb_file_name)
 	imgs.append({"thumbnail": thumbdir_base + thumb_file_name, 
+				"filename": filename,
 				"poster": imagedir_base + thumb_file_name, 
 				"href": imagedir_base + filename,
 				"type": "video/mp4"})
@@ -100,9 +102,9 @@ for media in files:
 
 	im.save(thumbdir + filename)
 	imgs.append({"thumbnail": thumbdir_base + filename, 
+				"filename": filename,
 				"href": imagedir_base + filename,
 				"type": "image/" + os.path.splitext(filename)[1][1:]})
-
 
 f = open(clonedir + "/index.html", "w")
 f.write("""<!DOCTYPE HTML>
@@ -134,7 +136,7 @@ f.write("""<!DOCTYPE HTML>
 <div id="links" class="links">
 """)
 imgDiv = ""
-for img in sorted(imgs, key=lambda x: x["href"]):
+for img in sorted(imgs, key=lambda x: os.path.getmtime(workingdir + '/' + x['filename'])):
 	imgDiv = imgDiv + '<a href="' + img["href"] + '" type="' + img["type"] + '"'
 	if "poster" in img:
 		imgDiv = imgDiv + ' data-poster="' + img["poster"] + '"'
