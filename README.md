@@ -10,3 +10,9 @@ The given folder is used to generate a static web gallery, composed of an index.
 Requires python-git.
 
     $ sudo apt-get install python-git
+
+Also requires FFVideo.
+
+    $ pip install ffvideo
+
+See https://bitbucket.org/zakhar/ffvideo/wiki/Home
