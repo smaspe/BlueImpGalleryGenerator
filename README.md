@@ -1,7 +1,7 @@
 BlueImpGalleryGenerator
 =======================
 
-Generator Script for BlueImp Gallery for an image/video folder
+Generator Script for BlueImp Gallery for an image/video folder. See http://blueimp.github.io/Gallery/ For details on BlueImp
 
 Takes exactly 1 argument, which can be a file or a folder. In the case of a file, the parent folder is considered.
 
